@@ -1,8 +1,18 @@
 import cv2
+import os
+import dotenv
 import numpy as np
 from tensorflow.keras import models
 
-class_names = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+dotenv.load_dotenv()
+
+class_names = [
+    'Blazer', 'Clana_Panjang', 'Clana_Pendek',
+    'Gaun', 'Hoodie', 'Jaket',
+    'Jaket_Denim', 'jaket_Olahraga', 'Jeans',
+    'Kaos', 'Kemeja', 'Mantel',
+    'Polo', 'Rok', 'Sweter'
+]
 
 model = models.load_model('vogue-mind.h5')
 
@@ -23,7 +33,7 @@ while True:
     class_label = class_names[class_index]
 
     cv2.putText(frame, class_label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv2.imshow('Emotion Recognition', frame)
+    cv2.imshow('Clothes Recognition', frame)
 
 cap.release()
 cv2.destroyAllWindows()
