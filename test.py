@@ -6,6 +6,8 @@ from tensorflow.keras import models
 
 dotenv.load_dotenv()
 
+model_path = os.getenv('MODEL_PATH')
+
 class_names = [
     'Blazer', 'Clana_Panjang', 'Clana_Pendek',
     'Gaun', 'Hoodie', 'Jaket',
@@ -14,7 +16,7 @@ class_names = [
     'Polo', 'Rok', 'Sweter'
 ]
 
-model = models.load_model('vogue-mind.h5')
+model = models.load_model(model_path)
 
 cap = cv2.VideoCapture(0)
 
