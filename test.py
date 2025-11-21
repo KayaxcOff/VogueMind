@@ -26,6 +26,8 @@ while True:
     if not ret:
         break
 
+    img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
     img = cv2.resize(frame, (224, 224))
     img = img.astype('float32') / 255.0
     img = np.expand_dims(img, axis=0)
@@ -36,6 +38,9 @@ while True:
 
     cv2.putText(frame, class_label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     cv2.imshow('Clothes Recognition', frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 cap.release()
 cv2.destroyAllWindows()
