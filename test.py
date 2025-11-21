@@ -28,7 +28,7 @@ while True:
 
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    img = cv2.resize(frame, (224, 224))
+    img = cv2.resize(img, (224, 224))
     img = img.astype('float32') / 255.0
     img = np.expand_dims(img, axis=0)
 
